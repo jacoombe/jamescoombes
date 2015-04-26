@@ -1,4 +1,3 @@
-__author__ = 'james'
 import unittest
 from app import app, configuration
 
@@ -22,6 +21,8 @@ class loginTests(unittest.TestCase):
         return self.app.get('/logout', follow_redirects=True)
 
     def test_login_logout(self):
+        """Tests that the default user can log in and appropiate error messages
+        are displayed for a failed login attempt"""
         rv = self.login(app.config['USERNAME'], app.config['PASSWORD'])
         assert 'You were logged in' in rv.data
         rv = self.logout()
